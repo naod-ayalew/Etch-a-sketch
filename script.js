@@ -9,6 +9,7 @@ const cont = document.getElementById('container'); // retreive the div with id="
    Now I want to add multiple divs to the container*/
 
 numGrid = prompt("How many squares to a side please?")
+colorS = prompt("which color do you want")
  
 function createDiv(createdElement, newClass, parentName) {         // This function add divs to the parent, "container", all divs have class "gridbox"
     const node = document.createElement(createdElement);  //create the element to be inserted
@@ -37,20 +38,43 @@ addSquares(numGrid, 'div', 'gridbox', 'container');
     function adds the blackout class. 
 */
 
-
-addEventListener('mouseover', (event) => {
-    elem = event.target
-    if (elem.classList[0] == 'gridbox') {
-        
-        elem.style.background = 'red';
-    }
-    
+function changeColor(color) {
+    addEventListener('mouseover', (event) => {
+        elem = event.target
+        if (elem.classList[0] == 'gridbox') {
+            
+            elem.style.background = color;
+        }
+    })
     
 }
 
 
+/*This function needs to generate random colors
 
-)
+    Array of hexadecimal digits
+    Loop 6 times, pick a random digit 0-15, get that index from the array
+    push it to a string
+
+*/
+ 
+function rainBow() {
+    let hexDigits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C' ,'D' ,'E' ,'F']
+    let randColor = ''
+    for (let i = 0; i < 6; ++i) {
+        j = Math.floor(Math.random() * 15)
+        randColor += hexDigits[j]  
+    }
+    return randColor
+}
+changeColor(colorS)
+m = rainBow()
+ 
+
+
+
+
+
  
 
  
