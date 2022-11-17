@@ -8,17 +8,8 @@ const cont = document.getElementById('container'); // retreive the div with id="
  /*so this is the basic form for adding things to the container I want
    Now I want to add multiple divs to the container*/
 
-let numGrid = 30;
+numGrid = prompt("How many squares to a side please?")
  
-
-/* we have the number of containers we need, 16 ** 2 = 256" *
-   I will try to create a function that loops for 256 times
-    for (i = 0, i < gridCount (256; ++i)
-        create the div
-        append the child
-   It might be prudent to create a function to create divs
-*/
-
 function createDiv(createdElement, newClass, parentName) {         // This function add divs to the parent, "container", all divs have class "gridbox"
     const node = document.createElement(createdElement);  //create the element to be inserted
     node.classList.add(newClass) //adds class to all the divs
@@ -29,31 +20,38 @@ function addSquares(num, cE, nC, pN) { // Now this function adds as many divs to
     let gridCount = (num ** 2)
     for (i = 0; i < gridCount; ++i) {
         createDiv(cE, nC, pN)    
-
     }
-    //This portion determines the necessary width of the grid to fit into the box.
-    gridDimension = 600 / num
+    gridDimension = 600 / num  //This portion determines the necessary width of the grid to fit into the box.
     gridDimension += "px"
-    var hw = document.getElementsByClassName('gridbox');
-    for(var i=0; i< hw.length;i++){
+    var hw = document.getElementsByClassName('gridbox');  //With this command, all the divs are listed in an array of num x num
+    for(var i=0; i< hw.length;i++){   //now each div has its width and height updated to the container width divided by number of grids to a side
        hw[i].style.width = gridDimension;
        hw[i].style.height = gridDimension;
+    } 
+}
+addSquares(numGrid, 'div', 'gridbox', 'container');
+
+
+/*This function finds the "target" of the mouse, and when that target
+    is one of the grid divs (which all have class gridbox), the 
+    function adds the blackout class. 
+*/
+
+
+addEventListener('mouseover', (event) => {
+    elem = event.target
+    if (elem.classList[0] == 'gridbox') {
+        elem.classList.add("blackout")
     }
-    console.log(gridDimension)
-     
+    
+    
 }
 
-addSquares(numGrid, 'div', 'gridbox', 'container');
-console.log(container)
 
-/*In order to get the width and height of the squares in the grid
-  to be dependent on the number of squares and the size of the container
-  I will create a function.
-     
-    2. Divide width, 512 by the number of squares to a side
-    3. Append that width to the gridbox elements
-  
-  
-  */
+
+)
+ 
+
+ 
  
  
