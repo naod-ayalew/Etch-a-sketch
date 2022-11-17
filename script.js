@@ -41,7 +41,8 @@ addSquares(numGrid, 'div', 'gridbox', 'container');
 addEventListener('mouseover', (event) => {
     elem = event.target
     if (elem.classList[0] == 'gridbox') {
-        elem.classList.add("blackout")
+        
+        elem.style.background = 'red';
     }
     
     
